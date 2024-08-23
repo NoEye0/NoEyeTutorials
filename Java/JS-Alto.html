@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de JavaScript - Nivel Avanzado</title>
+    <style>
+        /* Estilos generales para la página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1d2b64;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #4b5d6c;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tutorial de JavaScript - Nivel Avanzado</h1>
+
+        <!-- Ejemplo 1: Uso de Promises -->
+        <h2>Ejemplo 1: Uso de Promises</h2>
+        <button class="btn" onclick="simulateAsyncTask()">Simular Tarea Asíncrona</button>
+        <div class="output" id="promise-output"></div>
+
+        <!-- Ejemplo 2: Manejo de errores con try/catch -->
+        <h2>Ejemplo 2: Manejo de errores con try/catch</h2>
+        <button class="btn" onclick="handleErrors()">Manejar Error</button>
+        <div class="output" id="error-output"></div>
+
+        <!-- Ejemplo 3: Uso de async/await -->
+        <h2>Ejemplo 3: Uso de async/await con una API externa</h2>
+        <button class="btn" onclick="fetchData()">Obtener Datos de API</button>
+        <div class="output" id="api-output"></div>
+
+        <!-- Ejemplo 4: Manipulación avanzada del DOM con clases -->
+        <h2>Ejemplo 4: Manipulación avanzada del DOM con clases</h2>
+        <button class="btn" onclick="createBox()">Crear Cuadro</button>
+        <div id="box-container"></div>
+    </div>
+
+    <script>
+        // Ejemplo 1: Uso de Promises
+        function simulateAsyncTask() {
+            // Crear una nueva Promesa que se resuelve después de 2 segundos
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const success = Math.random() > 0.5; // Simular éxito o fallo
+                    if (success) {
+                        resolve("¡Tarea completada exitosamente!");
+                    } else {
+                        reject("Error al completar la tarea.");
+                    }
+                }, 2000);
+            });
+
+            // Manejo de la Promesa
+            promise
+                .then(message => {
+                    document.getElementById('promise-output').innerText = message;
+                })
+                .catch(error => {
+                    document.getElementById('promise-output').innerText = error;
+                });
+        }
+
+        // Ejemplo 2: Manejo de errores con try/catch
+        function handleErrors() {
+            try {
+                // Simular un error
+                throw new Error("Este es un error simulado.");
+            } catch (error) {
+                // Capturar y mostrar el error
+                document.getElementById('error-output').innerText = "Error capturado: " + error.message;
+            } finally {
+                console.log("Bloque finally: siempre se ejecuta.");
+            }
+        }
+
+        // Ejemplo 3: Uso de async/await con una API externa
+        async function fetchData() {
+            try {
+                // Hacer una solicitud a una API pública (JSONPlaceholder en este caso)
+                let response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+                
+                // Verificar si la respuesta fue exitosa
+                if (!response.ok) {
+                    throw new Error('Error al obtener los datos: ' + response.status);
+                }
+
+                // Convertir la respuesta a formato JSON
+                let data = await response.json();
+
+                // Mostrar los datos en el DOM
+                document.getElementById('api-output').innerText = 
+                    "Título: " + data.title + "\nContenido: " + data.body;
+            } catch (error) {
+                // Manejar errores en la solicitud
+                document.getElementById('api-output').innerText = "Error: " + error.message;
+            }
+        }
+
+        // Ejemplo 4: Manipulación avanzada del DOM con clases
+        class Box {
+            constructor(size, color) {
+                this.size = size;
+                this.color = color;
+            }
+
+            // Método para crear el elemento HTML del cuadro
+            createElement() {
+                let box = document.createElement('div');
+                box.style.width = this.size + 'px';
+                box.style.height = this.size + 'px';
+                box.style.backgroundColor = this.color;
+                box.style.margin = '10px';
+                box.style.display = 'inline-block';
+                return box;
+            }
+        }
+
+        function createBox() {
+            // Crear una nueva instancia de la clase Box
+            let randomSize = Math.floor(Math.random() * 100) + 50;
+            let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+            let newBox = new Box(randomSize, randomColor);
+
+            // Agregar el cuadro al DOM
+            document.getElementById('box-container').appendChild(newBox.createElement());
+        }
+    </script>
+</body>
+</html>

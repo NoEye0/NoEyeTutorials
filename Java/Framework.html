@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de Frameworks y Librerías de JavaScript con Ejemplos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        code {
+            background-color: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+        }
+
+        .example {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tutorial de Frameworks y Librerías de JavaScript con Ejemplos</h1>
+
+        <!-- Sección 1: React -->
+        <div class="section">
+            <h2>1. React</h2>
+            <p>
+                React es una biblioteca para construir interfaces de usuario. A continuación, un ejemplo básico de cómo crear un componente React y renderizarlo.
+            </p>
+            <div id="react-example" class="example">
+                <p><strong>Ejemplo de React:</strong></p>
+                <!-- React.js se debe incluir desde un CDN -->
+                <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+                <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+                <div id="react-root"></div>
+                <script>
+                    // Crear un componente en React
+                    const App = () => {
+                        return React.createElement('h1', null, '¡Hola, React!');
+                    };
+
+                    // Renderizar el componente en el DOM
+                    ReactDOM.render(
+                        React.createElement(App),
+                        document.getElementById('react-root')
+                    );
+                </script>
+            </div>
+        </div>
+
+        <!-- Sección 2: Vue.js -->
+        <div class="section">
+            <h2>2. Vue.js</h2>
+            <p>
+                Vue.js es un framework progresivo para construir interfaces de usuario. A continuación, un ejemplo básico de cómo crear una instancia de Vue y vincular datos.
+            </p>
+            <div id="vue-example" class="example">
+                <p><strong>Ejemplo de Vue.js:</strong></p>
+                <!-- Vue.js se debe incluir desde un CDN -->
+                <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+                <div id="vue-app">
+                    <p>{{ message }}</p>
+                </div>
+                <script>
+                    // Crear una instancia de Vue
+                    new Vue({
+                        el: '#vue-app',
+                        data: {
+                            message: '¡Hola, Vue.js!'
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+        <!-- Sección 3: Angular -->
+        <div class="section">
+            <h2>3. Angular</h2>
+            <p>
+                Angular es un framework robusto para construir aplicaciones web. Debido a la complejidad de Angular, el ejemplo básico se realiza usando un entorno local de desarrollo.
+            </p>
+            <p><strong>Ejemplo básico de Angular:</strong></p>
+            <pre>
+                &lt;!-- index.html --&gt;
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8"&gt;
+                    &lt;title&gt;Angular Example&lt;/title&gt;
+                    &lt;script src="https://unpkg.com/@angular/core/bundles/core.umd.js"&gt;&lt;/script&gt;
+                    &lt;script src="https://unpkg.com/@angular/common/bundles/common.umd.js"&gt;&lt;/script&gt;
+                    &lt;script src="https://unpkg.com/@angular/compiler/bundles/compiler.umd.js"&gt;&lt;/script&gt;
+                    &lt;script src="https://unpkg.com/@angular/platform-browser/bundles/platform-browser.umd.js"&gt;&lt;/script&gt;
+                    &lt;script src="https://unpkg.com/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"&gt;&lt;/script&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;my-app&gt;&lt;/my-app&gt;
+                    &lt;script&gt;
+                        (function (ng) {
+                            var AppComponent = ng.core.Component({
+                                selector: 'my-app',
+                                template: '&lt;h1&gt;Hola, Angular!&lt;/h1&gt;'
+                            }).Class({
+                                constructor: function () { }
+                            });
+
+                            ng.platformBrowserDynamic.platformBrowserDynamic().bootstrapModule(
+                                ng.core.NgModule({
+                                    imports: [ng.platformBrowser.BrowserModule],
+                                    declarations: [AppComponent],
+                                    bootstrap: [AppComponent]
+                                }).Class({
+                                    constructor: function () { }
+                                })
+                            );
+                        })(window.ng);
+                    &lt;/script&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </pre>
+            <p>
+                <em>Nota:</em> Angular requiere un entorno más elaborado para trabajar, por lo que el ejemplo está simplificado para este contexto.
+            </p>
+        </div>
+
+        <!-- Sección 4: Three.js -->
+        <div class="section">
+            <h2>4. Three.js (Gráficos 3D)</h2>
+            <p>
+                Three.js es una librería para crear gráficos 3D en el navegador. A continuación, un ejemplo básico que muestra cómo crear una escena con un cubo giratorio.
+            </p>
+            <div id="threejs-example" class="example" style="height: 400px; width: 100%; border: 1px solid #ccc;">
+                <p><strong>Ejemplo de Three.js:</strong></p>
+                <!-- Three.js se debe incluir desde un CDN -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+                <script>
+                    // Crear una escena
+                    const scene = new THREE.Scene();
+                    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                    const renderer = new THREE.WebGLRenderer();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    document.getElementById('threejs-example').appendChild(renderer.domElement);
+
+                    // Crear un cubo
+                    const geometry = new THREE.BoxGeometry();
+                    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+                    const cube = new THREE.Mesh(geometry, material);
+                    scene.add(cube);
+
+                    camera.position.z = 5;
+
+                    function animate() {
+                        requestAnimationFrame(animate);
+                        cube.rotation.x += 0.01;
+                        cube.rotation.y += 0.01;
+                        renderer.render(scene, camera);
+                    }
+
+                    animate();
+                </script>
+            </div>
+    </div>
+</body>
+</html>

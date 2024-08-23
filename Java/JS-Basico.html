@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de JavaScript Básico</title>
+    <style>
+        /* Estilos generales para la página */
+        body {
+            font-family: Arial, sans-serif; /* Fuente de texto */
+            background-color: #f4f4f4; /* Color de fondo de la página */
+            padding: 20px; /* Espaciado alrededor del contenido */
+        }
+
+        h1 {
+            text-align: center; /* Centrar el título */
+            color: #333; /* Color del texto */
+        }
+
+        .container {
+            max-width: 800px; /* Ancho máximo del contenedor */
+            margin: 0 auto; /* Centramos el contenedor horizontalmente */
+            background-color: #fff; /* Color de fondo del contenedor */
+            padding: 20px; /* Espaciado interno del contenedor */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor del contenedor */
+        }
+
+        .btn {
+            display: inline-block; /* Bloque en línea para mantener el tamaño definido */
+            padding: 10px 20px; /* Espaciado interno en el botón */
+            background-color: #1d2b64; /* Color de fondo del botón */
+            color: white; /* Color del texto */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor a un puntero al pasar sobre el botón */
+            font-size: 16px; /* Tamaño del texto */
+        }
+
+        .btn:hover {
+            background-color: #4b5d6c; /* Cambia el color de fondo al pasar el cursor */
+        }
+
+        .output {
+            margin-top: 20px; /* Margen superior para separar del elemento anterior */
+            padding: 10px; /* Espaciado interno */
+            background-color: #f0f0f0; /* Color de fondo para la caja de salida */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+        .hidden {
+            display: none; /* Ocultar elementos con esta clase */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tutorial de JavaScript Básico</h1>
+
+        <!-- Ejemplo 1: Manipulación de texto -->
+        <h2>Ejemplo 1: Cambiar el texto con JavaScript</h2>
+        <!-- Este párrafo cambiará su contenido al hacer clic en el botón -->
+        <p id="text-example">Este texto cambiará cuando hagas clic en el botón.</p>
+        <!-- Botón que activa la función para cambiar el texto -->
+        <button class="btn" onclick="changeText()">Cambiar Texto</button>
+
+        <!-- Ejemplo 2: Mostrar/Ocultar un elemento -->
+        <h2>Ejemplo 2: Mostrar/Ocultar un elemento</h2>
+        <!-- Botón para mostrar u ocultar el siguiente párrafo -->
+        <button class="btn" onclick="toggleVisibility()">Mostrar/Ocultar</button>
+        <!-- Párrafo que será mostrado u ocultado -->
+        <p id="toggle-text" class="hidden">¡Ahora me ves!</p>
+
+        <!-- Ejemplo 3: Calcular la suma de dos números -->
+        <h2>Ejemplo 3: Calcular la suma de dos números</h2>
+        <!-- Campos de entrada para los números -->
+        <input type="number" id="num1" placeholder="Número 1">
+        <input type="number" id="num2" placeholder="Número 2">
+        <!-- Botón que activa el cálculo de la suma -->
+        <button class="btn" onclick="calculateSum()">Calcular Suma</button>
+        <!-- Div donde se mostrará el resultado de la suma -->
+        <div class="output" id="sum-result"></div>
+
+        <!-- Ejemplo 4: Cambiar el color de fondo -->
+        <h2>Ejemplo 4: Cambiar el color de fondo</h2>
+        <!-- Botón que cambia el color de fondo de la página -->
+        <button class="btn" onclick="changeBackgroundColor()">Cambiar Color de Fondo</button>
+
+        <!-- Ejemplo 5: Temporizador simple -->
+        <h2>Ejemplo 5: Temporizador simple</h2>
+        <!-- Botón para iniciar el temporizador -->
+        <button class="btn" onclick="startTimer()">Iniciar Temporizador</button>
+        <!-- Div donde se mostrará el tiempo transcurrido -->
+        <div class="output" id="timer-output">Temporizador: 0 segundos</div>
+    </div>
+
+    <script>
+        // Ejemplo 1: Cambiar el texto de un elemento
+        function changeText() {
+            // Cambia el texto del párrafo con id="text-example"
+            document.getElementById('text-example').innerText = "¡El texto ha cambiado!";
+        }
+
+        // Ejemplo 2: Mostrar/Ocultar un elemento
+        function toggleVisibility() {
+            // Obtener el elemento que queremos mostrar/ocultar
+            var element = document.getElementById('toggle-text');
+            // Comprobar si el elemento tiene la clase 'hidden'
+            if (element.classList.contains('hidden')) {
+                // Si está oculto, removemos la clase para mostrarlo
+                element.classList.remove('hidden');
+            } else {
+                // Si está visible, añadimos la clase para ocultarlo
+                element.classList.add('hidden');
+            }
+        }
+
+        // Ejemplo 3: Calcular la suma de dos números
+        function calculateSum() {
+            // Obtener los valores de los inputs y convertirlos a números
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            // Calcular la suma
+            var sum = num1 + num2;
+            // Mostrar el resultado en el div con id="sum-result"
+            document.getElementById('sum-result').innerText = "La suma es: " + sum;
+        }
+
+        // Ejemplo 4: Cambiar el color de fondo de la página
+        function changeBackgroundColor() {
+            // Array de colores disponibles
+            var colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A5'];
+            // Elegir un color al azar del array
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            // Cambiar el color de fondo del body
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        // Ejemplo 5: Temporizador simple
+        var timer = 0; // Inicializar el contador del temporizador
+        function startTimer() {
+            // Ejecutar la función cada segundo (1000 milisegundos)
+            setInterval(function() {
+                timer++; // Incrementar el contador en 1
+                // Actualizar el texto en el div con id="timer-output"
+                document.getElementById('timer-output').innerText = "Temporizador: " + timer + " segundos";
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

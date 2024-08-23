@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de JavaScript - Nivel Medio</title>
+    <style>
+        /* Estilos generales para la página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1d2b64;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #4b5d6c;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .list-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tutorial de JavaScript - Nivel Medio</h1>
+
+        <!-- Ejemplo 1: Manipulación avanzada del DOM -->
+        <h2>Ejemplo 1: Agregar elementos dinámicamente</h2>
+        <!-- Campo de texto y botón para agregar nuevos elementos a la lista -->
+        <input type="text" id="item-input" placeholder="Agregar un nuevo elemento">
+        <button class="btn" onclick="addItem()">Agregar Elemento</button>
+        <!-- Lista donde se agregarán los nuevos elementos -->
+        <ul id="item-list"></ul>
+
+        <!-- Ejemplo 2: Manejo de eventos -->
+        <h2>Ejemplo 2: Evento de teclado</h2>
+        <!-- Campo de texto que capturará los eventos de teclado -->
+        <input type="text" id="key-input" placeholder="Escribe algo...">
+        <!-- Div donde se mostrará el último carácter presionado -->
+        <div class="output" id="key-output"></div>
+
+        <!-- Ejemplo 3: Trabajando con arrays -->
+        <h2>Ejemplo 3: Filtrar un array</h2>
+        <!-- Botón para filtrar números pares en un array -->
+        <button class="btn" onclick="filterArray()">Filtrar Números Pares</button>
+        <!-- Div donde se mostrará el resultado del filtrado -->
+        <div class="output" id="array-output"></div>
+
+        <!-- Ejemplo 4: Manipulación de objetos -->
+        <h2>Ejemplo 4: Mostrar propiedades de un objeto</h2>
+        <!-- Botón para mostrar las propiedades de un objeto -->
+        <button class="btn" onclick="displayObjectProperties()">Mostrar Propiedades</button>
+        <!-- Div donde se mostrarán las propiedades del objeto -->
+        <div class="output" id="object-output"></div>
+    </div>
+
+    <script>
+        // Ejemplo 1: Agregar elementos dinámicamente al DOM
+        function addItem() {
+            // Obtener el valor del input de texto
+            const input = document.getElementById('item-input').value;
+
+            // Crear un nuevo elemento de lista
+            const li = document.createElement('li');
+            li.textContent = input; // Establecer el texto del elemento de lista
+            li.classList.add('list-item'); // Agregar una clase CSS para estilos
+
+            // Agregar el nuevo elemento de lista al ul
+            document.getElementById('item-list').appendChild(li);
+
+            // Limpiar el input después de agregar el elemento
+            document.getElementById('item-input').value = '';
+        }
+
+        // Ejemplo 2: Manejo de eventos de teclado
+        document.getElementById('key-input').addEventListener('keyup', function(event) {
+            // Mostrar el último carácter presionado en el div de salida
+            document.getElementById('key-output').innerText = 'Último carácter: ' + event.key;
+        });
+
+        // Ejemplo 3: Filtrar un array
+        function filterArray() {
+            // Array de números de ejemplo
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            // Filtrar números pares utilizando una función de flecha
+            const evenNumbers = numbers.filter(number => number % 2 === 0);
+
+            // Mostrar el array filtrado en el div de salida
+            document.getElementById('array-output').innerText = 'Números Pares: ' + evenNumbers.join(', ');
+        }
+
+        // Ejemplo 4: Manipulación de objetos
+        function displayObjectProperties() {
+            // Objeto de ejemplo
+            const person = {
+                nombre: 'Juan',
+                edad: 30,
+                ciudad: 'Madrid'
+            };
+
+            // Obtener y mostrar las propiedades del objeto
+            const properties = Object.keys(person).map(key => `${key}: ${person[key]}`).join(', ');
+            document.getElementById('object-output').innerText = 'Propiedades del objeto: ' + properties;
+        }
+    </script>
+</body>
+</html>
