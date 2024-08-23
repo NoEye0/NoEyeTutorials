@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de Flexbox</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 80%;
+            height: 80%;
+            background-color: #ccc;
+            padding: 10px;
+        }
+
+        /* Ejemplo 1: Flexbox Básico */
+        .example-1 {
+            display: flex;
+            justify-content: space-between; /* Espacia los elementos a lo largo del eje principal */
+            align-items: center; /* Alinea los elementos a lo largo del eje transversal */
+            height: 100px;
+            background-color: #1d2b64;
+            color: white;
+        }
+
+        .example-1 .box {
+            background-color: #4b5d6c;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Ejemplo 2: Flex Direction */
+        .example-2 {
+            display: flex;
+            flex-direction: column; /* Cambia la dirección de los elementos a columna */
+            justify-content: space-around; /* Espacia los elementos a lo largo del eje principal */
+            align-items: flex-start; /* Alinea los elementos al inicio del eje transversal */
+            height: 300px;
+            background-color: #7a8d99;
+            color: white;
+        }
+
+        /* Ejemplo 3: Flex Wrap */
+        .example-3 {
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+            gap: 10px; /* Espacio entre los elementos */
+            background-color: #4b5d6c;
+            color: white;
+            padding: 10px;
+        }
+
+        .example-3 .box {
+            background-color: #1d2b64;
+            flex: 1 1 100px; /* Flex-grow, flex-shrink, flex-basis */
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Ejemplo 4: Justify Content */
+        .example-4 {
+            display: flex;
+            justify-content: center; /* Centra los elementos a lo largo del eje principal */
+            align-items: flex-end; /* Alinea los elementos al final del eje transversal */
+            height: 200px;
+            background-color: #1d2b64;
+            color: white;
+        }
+
+        /* Ejemplo 5: Align Items y Align Content */
+        .example-5 {
+            display: flex;
+            flex-direction: column; /* Cambia la dirección de los elementos a columna */
+            justify-content: space-between; /* Espacia los elementos a lo largo del eje principal */
+            align-items: stretch; /* Estira los elementos a lo largo del eje transversal */
+            height: 300px;
+            background-color: #7a8d99;
+            color: white;
+        }
+
+        .example-5 .box {
+            background-color: #4b5d6c;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Ejemplo 1: Flexbox Básico -->
+    <div class="container">
+        <div class="example-1">
+            <div class="box">Elemento 1</div>
+            <div class="box">Elemento 2</div>
+            <div class="box">Elemento 3</div>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- Ejemplo 2: Flex Direction -->
+    <div class="container">
+        <div class="example-2">
+            <div class="box">Elemento A</div>
+            <div class="box">Elemento B</div>
+            <div class="box">Elemento C</div>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- Ejemplo 3: Flex Wrap -->
+    <div class="container">
+        <div class="example-3">
+            <div class="box">Caja 1</div>
+            <div class="box">Caja 2</div>
+            <div class="box">Caja 3</div>
+            <div class="box">Caja 4</div>
+            <div class="box">Caja 5</div>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- Ejemplo 4: Justify Content -->
+    <div class="container">
+        <div class="example-4">
+            <div class="box">Elemento X</div>
+            <div class="box">Elemento Y</div>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- Ejemplo 5: Align Items y Align Content -->
+    <div class="container">
+        <div class="example-5">
+            <div class="box">Elemento 1</div>
+            <div class="box">Elemento 2</div>
+            <div class="box">Elemento 3</div>
+        </div>
+    </div>
+</body>
+</html>
